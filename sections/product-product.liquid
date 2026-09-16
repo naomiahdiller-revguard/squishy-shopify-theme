@@ -1,5 +1,35 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
-<section class="ocean-hero"><div class="page-width hero-grid"><div class="reveal"><div class="eyebrow">Orbitra sensory • ocean collection</div><h1 class="hero-title">Ocean Drift<br>Squish Cube</h1><p class="hero-copy">A tiny ocean you can hold. Squeeze the crystal-clear aqua gel and watch shells, stars and shimmer drift through your hands—then let it slowly settle back into shape.</p><div class="price-row"><span class="price">{{ current_variant.price | money }}</span>{% if current_variant.compare_at_price > current_variant.price %}<span class="compare">{{ current_variant.compare_at_price | money }}</span><span class="badge">Save</span>{% endif %}</div>{% form 'product', product, id:'product-form' %}<input type="hidden" name="id" value="{{ current_variant.id }}"><button class="btn btn-wide" type="submit" {% unless current_variant.available %}disabled{% endunless %}>{% if current_variant.available %}Add a little ocean to my cart{% else %}Sold out{% endif %}</button>{% endform %}<div class="micro">Secure checkout • Designed for satisfying squeezes • Giftable packaging</div></div><div class="hero-media reveal"><img src="{{ 'ocean squish main product image.avif' | asset_url }}" alt="Ocean Drift Squish Cube" width="900" height="900"><div class="float-note one">✦ slow-squish sensory gel</div><div class="float-note two">☼ shells + shimmer inside</div></div></div></section>
-<div class="trust-strip"><div class="page-width trust-grid"><div class="trust-item">✦ Mesmerizing movement</div><div class="trust-item">♡ Stress-relief friendly</div><div class="trust-item">☼ Pocket-size escape</div><div class="trust-item">⌁ Secure checkout</div></div></div>
-<div class="sticky-buy"><div><strong>Ocean Drift Cube</strong><br><small>{{ current_variant.price | money }}</small></div><button class="btn" data-scroll-buy>Get yours</button></div>
-{% schema %}{"name":"Ocean product","settings":[],"presets":[{"name":"Ocean product"}]}{% endschema %}
+<section class="product-shell" data-product-root>
+  <div class="page-width product-layout">
+    <div class="product-gallery reveal">
+      <div class="product-main-media"><img data-main-product-image src="{{ 'ocean squish main product image.avif' | asset_url }}" alt="{{ product.title | default: 'Ocean Drift Squish Cube' | escape }}"></div>
+      <div class="product-thumbs">
+        <button class="product-thumb active" type="button" data-gallery-src="{{ 'ocean squish main product image.avif' | asset_url }}"><img src="{{ 'ocean squish main product image.avif' | asset_url }}" alt="Ocean Drift Squish Cube"></button>
+        <button class="product-thumb" type="button" data-gallery-src="{{ 'ocean squish squished.png' | asset_url }}"><img src="{{ 'ocean squish squished.png' | asset_url }}" alt="Ocean Drift cube squeezed"></button>
+        <button class="product-thumb" type="button" data-gallery-src="{{ 'ocean squish image 1.avif' | asset_url }}"><img src="{{ 'ocean squish image 1.avif' | asset_url }}" alt="Ocean Drift lifestyle"></button>
+        <button class="product-thumb" type="button" data-gallery-src="{{ 'ocean squish 3 in package.avif' | asset_url }}"><img src="{{ 'ocean squish 3 in package.avif' | asset_url }}" alt="Ocean Drift packaging"></button>
+      </div>
+    </div>
+    <div class="product-info reveal">
+      <a class="product-back" href="/">← Orbitra / sensory finds</a>
+      <div class="rating-line"><span class="stars">★★★★★</span><span>the squish you keep reaching for</span></div>
+      <h1>{{ product.title | default: 'Ocean Drift Squish Cube' }}</h1>
+      <p class="product-tagline">Your own tiny ocean, trapped in the most ridiculously satisfying squish.</p>
+      <div class="price-row"><span class="price">{{ current_variant.price | money }}</span>{% if current_variant.compare_at_price > current_variant.price %}<span class="compare">{{ current_variant.compare_at_price | money }}</span><span class="badge">limited drop</span>{% endif %}</div>
+      <div class="product-bullets"><div>✦ Clear aqua gel with floating ocean details</div><div>✦ Slow, glossy squeeze + mesmerizing movement</div><div>✦ Desk-sized, giftable and dangerously hard to put down</div></div>
+      {% form 'product', product, id:'ocean-product-form', class:'product-form' %}
+        {% unless product.has_only_default_variant %}<label for="VariantSelect">Choose yours</label><select id="VariantSelect" name="id" data-variant-select>{% for variant in product.variants %}<option value="{{ variant.id }}" {% if variant == current_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>{{ variant.title }}{% unless variant.available %} — Sold out{% endunless %}</option>{% endfor %}</select>{% else %}<input type="hidden" name="id" value="{{ current_variant.id }}">{% endunless %}
+        <div class="buy-row"><div class="qty"><button type="button" data-qty-minus>−</button><input name="quantity" value="1" min="1" inputmode="numeric" data-qty><button type="button" data-qty-plus>+</button></div><button class="btn btn-wide add-cart" type="submit" {% unless current_variant.available %}disabled{% endunless %}>{% if current_variant.available %}Add to cart — {{ current_variant.price | money }}{% else %}Sold out{% endif %}</button></div>
+        {% if current_variant.available %}<div class="dynamic-checkout">{{ form | payment_button }}</div>{% endif %}
+      {% endform %}
+      <div class="checkout-note">Secure checkout · Ships with protective packaging · Easy gifting</div>
+      <div class="mini-cards"><div><strong>SO SATISFYING</strong><span>Slow-moving gel made for absent-minded squeezing.</span></div><div><strong>LOOK CLOSER</strong><span>Shells, stars and shimmer drift differently every time.</span></div><div><strong>KEEP IT CLOSE</strong><span>Desk, nightstand, bag—wherever your hands get bored.</span></div></div>
+      <details class="product-detail"><summary>What does it feel like?</summary><p>Soft, cool and gel-like with a slow resistance that makes each squeeze feel substantial rather than flimsy.</p></details>
+      <details class="product-detail"><summary>What's inside?</summary><p>Aqua sensory gel with decorative ocean-inspired pieces and shimmer sealed inside the squishy cube.</p></details>
+      <details class="product-detail"><summary>Care</summary><p>Keep away from sharp objects and excessive heat. Wipe the exterior gently with a soft damp cloth when needed.</p></details>
+    </div>
+  </div>
+</section>
+<div class="trust-strip"><div class="page-width trust-grid"><div class="trust-item">✦ Mesmerizing movement</div><div class="trust-item">♡ Gift-worthy find</div><div class="trust-item">☼ Tiny beach break</div><div class="trust-item">⌁ Secure checkout</div></div></div>
+<div class="sticky-buy"><div><strong>{{ product.title | default: 'Ocean Drift Cube' }}</strong><br><small>{{ current_variant.price | money }}</small></div><button class="btn" data-scroll-buy>Get yours</button></div>
+{% schema %}{"name":"Ocean Drift product","settings":[],"presets":[{"name":"Ocean Drift product"}]}{% endschema %}
