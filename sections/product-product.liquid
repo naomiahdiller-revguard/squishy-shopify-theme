@@ -12,7 +12,7 @@
     </div>
     <div class="product-info reveal">
       <a class="product-back" href="/">← Orbitra / sensory finds</a>
-      <div class="rating-line"><span class="stars">★★★★★</span><span>the squish you keep reaching for</span></div>
+      <div class="eyebrow">The squish you keep reaching for</div>
       <h1>{{ product.title | default: 'Ocean Drift Squish Cube' }}</h1>
       <p class="product-tagline">Your own tiny ocean, trapped in the most ridiculously satisfying squish.</p>
       <div class="price-row"><span class="price">{{ current_variant.price | money }}</span>{% if current_variant.compare_at_price > current_variant.price %}<span class="compare">{{ current_variant.compare_at_price | money }}</span><span class="badge">limited drop</span>{% endif %}</div>
@@ -30,6 +30,6 @@
     </div>
   </div>
 </section>
-<div class="trust-strip"><div class="page-width trust-grid"><div class="trust-item">✦ Mesmerizing movement</div><div class="trust-item">♡ Gift-worthy find</div><div class="trust-item">☼ Tiny beach break</div><div class="trust-item">⌁ Secure checkout</div></div></div>
+<div class="trust-strip"><div class="page-width trust-grid"><div class="trust-item">Mesmerizing movement</div><div class="trust-item">Gift-worthy find</div><div class="trust-item">Tiny beach break</div><div class="trust-item">Secure checkout</div></div></div>
 <div class="sticky-buy"><div><strong>{{ product.title | default: 'Ocean Drift Cube' }}</strong><br><small>{{ current_variant.price | money }}</small></div><button class="btn" data-scroll-buy>Get yours</button></div>
 {% schema %}{"name":"Ocean Drift product","settings":[],"presets":[{"name":"Ocean Drift product"}]}{% endschema %}

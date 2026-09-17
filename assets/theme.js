@@ -1,4 +1,6 @@
+document.documentElement.classList.remove('no-js');
 document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelector('.section-soft')?.setAttribute('id','story');
   const reveals=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});reveals.forEach(el=>io.observe(el));}else{reveals.forEach(el=>el.classList.add('visible'));}
   document.querySelectorAll('[data-scroll-buy]').forEach(btn=>btn.addEventListener('click',()=>document.querySelector('#ocean-product-form')?.scrollIntoView({behavior:'smooth',block:'center'})));

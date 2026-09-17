@@ -1,1 +1,1 @@
-{"sections":{"hero":{"type":"product-hero","settings":{}}},"order":["hero"]}
+{"sections":{"hero":{"type":"product-hero","settings":{}},"story":{"type":"product-story","settings":{}},"buy":{"type":"home-product","settings":{}},"faq":{"type":"product-faq","settings":{}}},"order":["hero","story","buy","faq"]}
